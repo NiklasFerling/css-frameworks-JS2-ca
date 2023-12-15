@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>#SoMe | Logged out</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://kit.fontawesome.com/4c69c38b68.js" crossorigin="anonymous"></script>
+    <script src="../js/main.js" type="module"></script>
+    <script type="module" src="../js/module.mjs"></script>
+    <script src="../js/login.js" type="module"></script>
+    <link rel="stylesheet" href="../dist/css/index.css" />
+  </head>
+  <body class="bg-dark">
+    <div class="container mt-5">
+      <div class="col col-sm-9 col-md-6 col-lg-5 col-xl-4 col-xxl-4 mx-auto border border-secondary rounded-4 p-5 bg-light">
+        <div class="row"><h1 class="text-center">#SoMe</h1></div>
+        <div class="row mt-5 mb-2"><h2>Log in</h2></div>
+        <span id="loginError" class="form-text text-danger"></span>
+        <form method="" id="logInForm" novalidate>
+          <div class="row">
+            <input id="loginEmail" type="email" class="form-control p-2 border border-secondary rounded-3" placeholder="name@example.com" required />
+          </div>
+          <div class="row my-3">
+            <input id="loginPassword" type="password" class="form-control p-2 border border-secondary rounded-3" placeholder="password" required />
+          </div>
+          <div class="row">
+            <button class="btn btn-primary p-2" type="submit">Log in</button>
+          </div>
+        </form>
+        <div class="row align-items-center">
+          <div class="col">
+            <hr class="my-5" />
+          </div>
+          <div class="col-auto text-center">Don't have an account?</div>
+          <div class="col">
+            <hr class="my-5" />
+          </div>
+        </div>
+        <div class="row mb-2"><h2>Sign Up</h2></div>
+        <form class="needs-validation" id="signUpForm" novalidate>
+          <div class="row my-3">
+            <input id="email" type="text" class="form-control p-2 border-secondary" placeholder="example@noroff.no" required />
+            <span id="email_error" class="form-text text-danger d-none">please enter a valid noroff email address</span>
+          </div>
+          <div class="row my-3">
+            <div class="input-group border rounded-3 p-0">
+              <span class="input-group-text border border-secondary">@</span>
+              <input id="name" type="name" class="form-control p-2 border border-secondary" placeholder="username" required />
+            </div>
+            <span id="name_error" class="form-text text-danger d-none">please enter a username</span>
+          </div>
+          <div class="row my-3">
+            <input id="password" type="password" class="form-control p-2 border border-secondary rounded-3" placeholder="password" required />
+            <span id="password_message" class="form-text text-danger d-none">Must be at least 8 characters</span>
+          </div>
+          <div class="row my-3">
+            <input id="confirmPassword" type="password" class="form-control p-2 border border-secondary rounded-3" placeholder="password" required />
+            <span id="confirm_password_message" class="form-text text-danger d-none">must be identical</span>
+          </div>
+          <div class="row">
+            <button class="btn btn-primary p-2" type="submit">Create account</button>
+            <span id="registration_successful" class="form-text text-success d-none">Registration was successful!</span>
+            <span id="user_exists" class="form-text text-danger d-none">User already exist</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

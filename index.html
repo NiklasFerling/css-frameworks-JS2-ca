@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log In | #SoMe</title>
+    <title>#SoMe | Home</title>
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -14,80 +14,153 @@
       src="https://kit.fontawesome.com/4c69c38b68.js"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="../js/module.mjs"></script>
+    <script type="module" src="/js/feed.js"></script>
+    <script
+      src="https://kit.fontawesome.com/4c69c38b68.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="dist/css/index.css" />
   </head>
-  <body class="bg-dark">
-    <div class="container mt-5">
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark py-3 px-4">
+      <a class="text-light fs-3 navbar-brand" href="/">#SoMe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav text-center">
+              <li class="nav-item ms-3 mt-3 mt-md-0">
+                  <form>
+                      <input id="search" type="search" class="form-control rounded-5" placeholder="Search" aria-label="Search">
+                  </form>
+              </li>
+              <li class="nav-item ms-3 mt-3 mt-md-0">
+                  <a id="profileButton" class="btn btn-dark border-white">Profile</a>
+                  <a id="signOut" class="btn btn-dark border-danger text-danger">Sign out</a>
+              </li>
+          </ul>
+      </div>
+    </nav>
+    <div class="container-fluid">
       <div
-        class="col col-sm-9 col-md-6 col-lg-5 col-xl-4 col-xxl-4 mx-auto border border-secondary rounded-4 p-5 bg-light"
+        class="col col-md-10 col-lg-6 col-xl-5 col-xxl-5 mx-auto pb-5 min-vh-100"
       >
-        <div class="row"><h1 class="text-center">#SoMe</h1></div>
-        <div class="row mt-5 mb-2"><h2>Log in</h2></div>
-        <form action="feed/index.html">
-          <div class="row">
-            <input
-              type="email"
-              class="form.control p-2 border border-secondary rounded-3"
-              placeholder="name@example.com"
-              required
-            />
-          </div>
-          <div class="row my-3">
-            <input
-              type="password"
-              class="form.control p-2 border border-secondary rounded-3"
-              placeholder="●●●●●●●●"
-              required
-              minlength="8"
-            />
-          </div>
-          <div class="row">
-            <button class="btn btn-primary p-2" name="submit">Submit</button>
-          </div>
-          <hr class="my-5" />
-          <div class="row">
-            <a
-              href="feed/index.html"
-              class="btn border-danger p-2 p-lg-3 border rounded-3 justify-content-between"
-            >
-              <div class="row">
-                <div class="col-auto">
-                  <i class="fa-brands fa-google fs-5"></i>
-                </div>
-                <div class="col">
-                  <span class="mx-auto">Continue with Google</span>
-                </div>
+        <div class="row bg-light border rounded-4 py-2 my-3">
+          <form id="post">
+            <input id="title" type="text" class="form-control mb-2" placeholder="Title" required></input>
+            <textarea
+              id="postText"
+              rows="1"
+              class="w-100 form-control fs-6 p-3 my-1"
+              placeholder="What are you sinking about?"
+            ></textarea>
+            <div class="row mx-3 align-items-center">
+              <div class="col text-end">
+                <button
+                  class="btn btn-primary fs-5 border rounded-5 py-0 px-3"
+                  type="submit"
+                >
+                  Post
+                </button>
               </div>
-            </a>
-            <a
-              href="feed/index.html"
-              class="btn border-primary p-2 p-lg-3 my-3 border rounded-3 justify-content-between"
-            >
-              <div class="row">
-                <div class="col-auto">
-                  <i class="fa-brands fa-facebook fs-5"></i>
-                </div>
-                <div class="col">
-                  <span class="mx-auto">Continue with Facebook</span>
-                </div>
-              </div>
-            </a>
-            <a
-              href="feed/index.html"
-              class="btn border-secondary p-2 p-lg-3 border rounded-3 justify-content-between"
-            >
-              <div class="row">
-                <div class="col-auto">
-                  <i class="fa-brands fa-apple fs-4"></i>
-                </div>
-                <div class="col">
-                  <span class="mx-auto">Continue with Apple</span>
-                </div>
-              </div>
-            </a>
+            </div>
+          </form>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <div class="dropdown col-auto">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter
+            </button>
+            <ul class="dropdown-menu">
+              <li><a role="button" id="forYou" class="dropdown-item">For You</a></li>
+              <li><a role="button" id="following" class="dropdown-item">Following</a></li>
+            </ul>
           </div>
-        </form>
+        </div>
+        <div id="posts-container">
+        </div>
+        <div class="loader">
+          <div class="row bg-light border rounded-4 py-2 mb-3">
+            <div class="col-auto placeholder-glow">
+              <a class="p-3 placeholder rounded-5"></a>
+            </div>
+            <div class="col me-4">
+              <div class="mb-2 placeholder-glow">
+                <div class="col-3 fw-bold placeholder rounded-3"></div>
+              </div>
+              <p class="placeholder-glow" aria-hidden="true">
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+              </p>
+            </div>
+          </div>
+          <div class="row bg-light border rounded-4 py-2 mb-3">
+            <div class="col-auto placeholder-glow">
+              <a class="p-3 placeholder rounded-5"></a>
+            </div>
+            <div class="col me-4">
+              <div class="mb-2 placeholder-glow">
+                <div class="col-3 fw-bold placeholder rounded-3"></div>
+              </div>
+              <p class="placeholder-glow" aria-hidden="true">
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+              </p>
+            </div>
+          </div>
+          <div class="row bg-light border rounded-4 py-2 mb-3">
+            <div class="col-auto placeholder-glow">
+              <a class="p-3 placeholder rounded-5"></a>
+            </div>
+            <div class="col me-4">
+              <div class="mb-2 placeholder-glow">
+                <div class="col-3 fw-bold placeholder rounded-3"></div>
+              </div>
+              <p class="placeholder-glow" aria-hidden="true">
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <button
+              class="btn btn-primary mx-auto w-auto mt-3 disabled placeholder text-primary"
+              aria-disabled="true"
+            >
+              Loading
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+    <footer class="footer bg-dark py-4">
+      <div class="container">
+        <span class="text-light">"We're sinking, we're sinking!"</span>
+      </div>
+    </footer>
   </body>
 </html>

@@ -3,151 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feed | #SoMe</title>
+    <title>#SoMe | Profile</title>
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://kit.fontawesome.com/4c69c38b68.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/4c69c38b68.js" crossorigin="anonymous"></script>
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/module.mjs"></script>
+    <script type="module" src="../js/profile.js"></script>
     <link rel="stylesheet" href="../dist/css/index.css" />
   </head>
   <body>
-    <nav class="navbar bg-dark py-3 px-4">
-      <a class="text-light fs-3 text-decoration-none" href="../feed/index.html"
-        >#SoMe</a
+    <nav class="navbar navbar-expand-md bg-dark py-3 px-4">
+      <a class="text-light fs-3 navbar-brand" href="/">#SoMe</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
-      <div class="col-6 col-lg-4 flex-center mx-auto">
-        <form class="d-none d-sm-block">
-          <input
-            type="search"
-            class="form-control rounded-5"
-            placeholder="Search"
-            aria-label="Search"
-            aria-describedby="search-addon"
-          />
-        </form>
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav text-center">
+          <li class="nav-item ms-3 mt-3 mt-md-0">
+            <a id="profileButton" class="btn btn-dark border-white">Profile</a>
+            <a id="signOut" class="btn btn-dark border-danger text-danger">Sign out</a>
+          </li>
+        </ul>
       </div>
-      <a href="../profile/index.html" class="border rounded-5"
-        ><i class="fa-solid fa-user text-light p-3"></i
-      ></a>
     </nav>
     <div class="container-fluid">
-      <div
-        class="col col-md-10 col-lg-6 col-xl-5 col-xxl-5 mx-auto pb-5 border-start border-end border-secondary bg-light min-vh-100"
-      >
+      <div class="col col-md-10 col-lg-6 col-xl-5 col-xxl-5 mx-auto pb-5 min-vh-100">
         <div class="row align-items-center">
           <div class="col-auto">
-            <a href="../feed/index.html">
+            <a href="../" role="button">
               <i class="fa-solid fa-arrow-left fs-3 p-3 text-dark"></i>
+              <span class="d-none">Go back</span>
             </a>
           </div>
         </div>
-        <div class="row justify-content-between px-4 align-items-center">
-          <div class="col-7 p-0">
-            <h3 class="m-0 fs-5 text-center">Niklas Ferling</h3>
+        <div class="row justify-content-center justify-content-md-between px-4 align-items-center bg-light border rounded-4 p-5">
+          <div id="profilePictureContainer" class="col-8 col-md-4 order-md-2 mb-2 mb-md-0 p-0" style="height: 150px; width: 150px">
+            <img id="profilePicture" alt="Profile picture" class="w-100 h-100 rounded-circle" style="object-fit: cover" />
+          </div>
+          <div id="countContainer" class="col-10 col-md-7 p-0 order-md-1">
+            <h3 id="displayName" class="m-0 fs-5 text-center"></h3>
             <div class="row text-center my-3 mx-0 justify-content-between">
               <div class="col-auto">
                 <p class="m-0">Posts</p>
-                <p class="m-0">3</p>
+                <p id="countPosts" class="m-0"></p>
               </div>
               <div class="col-auto">
                 <p class="m-0">Followers</p>
-                <p class="m-0">389</p>
+                <p id="countFollowers" class="m-0"></p>
               </div>
               <div class="col-auto">
                 <p class="m-0">Following</p>
-                <p class="m-0">397</p>
+                <p id="countFollowing" class="m-0"></p>
               </div>
             </div>
-            <div class="row px-4">
-              <span class="fw-bold p-0">Bio</span>
-              <p class="p-0 fs-7">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Laborum, culpa.
-              </p>
-            </div>
             <div class="row w-100 mx-auto px-2">
-              <button class="btn btn-primary">Follow</button>
+              <button id="followButton" class="btn"></button>
+              <a id="editProfile" href="./edit/" class="btn btn-primary d-none border-white mx-2">Edit Profile</a>
             </div>
-          </div>
-          <div class="col-4">
-            <img
-              src="../assets/PB^2.jpg"
-              alt="Profile picture"
-              class="img-fluid"
-            />
           </div>
         </div>
-        <hr class="my-4" />
         <div class="row px-4">
           <span class="fs-5 my-4">Posts:</span>
         </div>
-        <div class="row">
-          <div class="col-auto ms-4 me-1">
-            <a href="../profile/index.html" class=""
-              ><i class="fa-solid fa-user text-dark p-3 border rounded-5"></i
-            ></a>
-          </div>
-          <div class="col me-4">
-            <div class="row mb-2">
-              <div class="col-auto fw-bold">Ola Normann</div>
-              <div class="col-auto px-1 text-secondary">@olanormann</div>
-              ·
-              <div class="col-auto px-1 text-secondary">Just now</div>
+        <p id="noPostsMessage" class="text-center d-none">This user has not posted yet</p>
+        <div id="posts-container"></div>
+        <div class="loader">
+          <div class="row bg-light border rounded-4 py-2 mb-3 loader">
+            <div class="col-auto placeholder-glow">
+              <a class="p-3 placeholder rounded-5"></a>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-              dolorem porro illo, blanditiis earum repudiandae officia fugit,
-              nihil eligendi deleniti adipisci saepe laboriosam quo mollitia.
-              Necessitatibus distinctio commodi sed nemo?
-            </p>
-          </div>
-        </div>
-        <hr class="m-4" />
-        <div class="row">
-          <div class="col-auto ms-4 me-1">
-            <a href="../profile/index.html" class=""
-              ><i class="fa-solid fa-user text-dark p-3 border rounded-5"></i
-            ></a>
-          </div>
-          <div class="col me-4">
-            <div class="row mb-2">
-              <div class="col-auto fw-bold">Ola Normann</div>
-              <div class="col-auto px-1 text-secondary">@olanormann</div>
-              ·
-              <div class="col-auto px-1 text-secondary">27 min</div>
+            <div class="col me-4">
+              <div class="mb-2 placeholder-glow">
+                <div class="col-3 fw-bold placeholder rounded-3"></div>
+              </div>
+              <p class="placeholder-glow" aria-hidden="true">
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+              </p>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
-              dolorem porro illo, blanditiis earum repudiandae officia fugit
-            </p>
           </div>
-        </div>
-        <hr class="m-4" />
-        <div class="row">
-          <div class="col-auto ms-4 me-1">
-            <a href="../profile/index.html" class=""
-              ><i class="fa-solid fa-user text-dark p-3 border rounded-5"></i
-            ></a>
-          </div>
-          <div class="col me-4">
-            <div class="row mb-2">
-              <div class="col-auto fw-bold">Ola Normann</div>
-              <div class="col-auto px-1 text-secondary">@olanormann</div>
-              ·
-              <div class="col-auto px-1 text-secondary">27 min</div>
+          <div class="row bg-light border rounded-4 py-2 mb-3">
+            <div class="col-auto placeholder-glow">
+              <a class="p-3 placeholder rounded-5"></a>
             </div>
-            <p>Can you spot the missing number in under 20 seconds?</p>
-            <img
-              src="/assets/Missing_number.jfif"
-              alt="Post attachment"
-              class="img-thumbnail img-fluid"
-            />
+            <div class="col me-4">
+              <div class="mb-2 placeholder-glow">
+                <div class="col-3 fw-bold placeholder rounded-3"></div>
+              </div>
+              <p class="placeholder-glow" aria-hidden="true">
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+              </p>
+            </div>
+          </div>
+          <div class="row bg-light border rounded-4 py-2 mb-3">
+            <div class="col-auto placeholder-glow">
+              <a class="p-3 placeholder rounded-5"></a>
+            </div>
+            <div class="col me-4">
+              <div class="mb-2 placeholder-glow">
+                <div class="col-3 fw-bold placeholder rounded-3"></div>
+              </div>
+              <p class="placeholder-glow" aria-hidden="true">
+                <span class="col-4 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-5 placeholder"></span>
+                <span class="col-7 placeholder"></span>
+                <span class="col-2 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+                <span class="col-4 placeholder"></span>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn btn-primary mx-auto w-auto mt-3 disabled placeholder text-primary" aria-disabled="true">Loading</button>
           </div>
         </div>
       </div>

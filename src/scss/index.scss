@@ -1,2 +1,17 @@
 @import "_variables.scss";
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+textarea {
+  resize: none;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0;
+}
+
+.hiddendiv {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  width: 400px;
+}
