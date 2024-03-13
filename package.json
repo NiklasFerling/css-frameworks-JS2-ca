@@ -6,7 +6,9 @@
     "test": "npm run test-unit && npm run test-e2e-cli",
     "test-unit": "jest",
     "test-e2e": "cypress open",
-    "test-e2e-cli": "cypress run"
+    "test-e2e-cli": "cypress run",
+    "build": "sass src/scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css"
   },
   "repository": {
     "type": "git",
